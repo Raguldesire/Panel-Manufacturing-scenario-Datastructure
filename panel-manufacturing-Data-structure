@@ -1,0 +1,207 @@
+class company:                                                                               #create company class
+  def __init__(self,dept):
+    self.Dept=dept
+  def cad_design(self,sample):                                                               #create a function Cad-design
+    self.cad_design=sample
+    return self.cad_design
+  def design_team(self,Design):                                                              #Create a function design_team
+    self.design=Design
+    print("Designing Team")
+    print("Designs are ready")
+    return self.design
+  def bom(self,requirements):                                                                #creating a function bill of materials
+    print("Bill of Materials")
+    print("Reviewing the design")
+    self.materials=[]                                                                        #creates an empty list for materials
+    print("what are the Requirements:")
+    for i in range(6):
+     if i==1:
+      self.materials.append(int(input("How many bolts and nuts needed:")))
+     if i==2:
+      self.materials.append(int(input("How many back sheet required:")))
+     if i==3:
+       self.materials.append(int(input("How many panels required:")))
+     if i==4:
+       self.materials.append(int(input("How many Mild steel:")))
+     if i==5:
+       self.materials.append(int(input("How much Resigns needed:")))
+       return self.materials 
+  def inventory(self,materials):                                                          #creating a function inventory
+      print("Requirements:\n1.Bolts and nuts:",materials[0],"\n2.Back sheet:",materials[1],"\n3.panels:",materials[2],"\n4.Mild steel:",materials[3],"\n5.Resigns:",materials[4])
+      print("Checking the Requirements")
+      for i in range(1,6):
+       option=int(input())
+       if i==1 and materials[0]<500:
+         print("Bolts and Nuts available")
+       elif i==2 and  materials[1]<200:
+         print("Back sheet available")
+       elif i==3 and materials[2]<50:
+        print("panels are available")
+       elif i==4 and materials[3]<250:
+        print("Mild steel available")
+       elif i==5 and materials[4]<40:
+        print("Resigns are available")
+       else:
+        print("Not avaialble now,we can place the order and deliver within two days")
+      print("********************")
+      print("Remaining inventory")
+      print("1.Bolts and Nuts:",500-materials[0],"\n2.Back sheets:",200-materials[1],"\n3.Panels:",50-materials[2],"\n4.Mild steel:",250-materials[3],"\n5.Resigns:",40-materials[4])
+  def assembly_invent(self,bom):                                                        #creating function for assembly inventory
+    self.assem_invent=bom
+    print("Checking the Requirements")
+    for i in range(1,5):
+      option=int(input())
+      if i==1 and assembly[0]<50:
+        print("Inverter available")
+      elif i==2 and assembly[1]<30:
+        print("Battery available")
+      elif i==3 and assembly[2]<100:
+        print("charge Controller available")
+      elif i==4 and assembly[3]<500:
+        print("cables and Wires available")
+      else:
+        print("Required item not availalble now,we requested ur order and delivered within two days")
+    print("***************")
+    print("Remaining Assembly inventory")
+    print("1.Inverter:",50-assembly[0],"\n2.Battery:",30-assembly[1],"\n3.Charge controller:",100-assembly[2],"\n4.Cables and Wires:",500-assembly[3])
+    return self.assem_invent
+  def assembly(self,design,inventory):                                                 #creating function assembly
+    self.assem=design
+    self.assem_invent=inventory
+    print("Checking all the materials are available")
+    option=input()
+    if option=="yes":
+      print("Reviewing the design")
+      print("******************************")
+      print("Product Assembled successfully")
+    else:
+      print("still waiting for the remaining inventory")
+    return self.assem
+  def fabrication(self,inven,design):
+    self.Inventory=inventory
+    self.Design=design
+    print("Checking all the materials are available")
+    option=input()
+    if option=="yes":
+     print("Design to be fabricated")
+    else:
+      print("still waiting for the remaining inventory")
+  def punching(self,fab):
+    self.punching=fab
+    print("***************")
+    print("Punching Done")
+    return self.punching
+  def bending(self,bend):
+    self.bending=bend
+    print("***************")
+    print("Bending Done")
+    return self.bending
+  def welding(self,weld):
+    self.welding=weld
+    print("***************")
+    print("Welding Done")
+    return self.welding
+  def electroplating(self,plate):
+    self.electro=plate
+    print("***************")
+    print("Electro-plating Done")
+  def powdercoat(self,coat):
+    self.powdercoat=coat
+    print("***************")
+    print("Powder-Coating Done")
+    return self.powdercoat
+  def testing(self,assembly):
+    self.testing=assembly
+    testing=[]
+    print("1.Leakage test:")
+    testing.append(input())
+    print("2.Durability test:")
+    testing.append(input())
+    print("3.paint test")
+    testing.append(input())
+    print("Power and voltage discharge test:")
+    testing.append(input())
+    print("Testing Result:\n1.Leakege test:",testing[0],"\n2.Durability test:",testing[1],"\n3.paint test:",testing[2],"\n4.power and voltage test:",testing[3])
+    return testing
+class customer:                                                                                  #creating a class customer
+  def __init__(self,order):
+    self.Order=order
+  def customer_visit(self,product):                                                              #Customer to be visit once all process done
+    self.customer_visit=product
+    Bill_amount=[]
+    print("Bill-Generate")
+    Bill_amount.append(int(input("1.Sheet cost:")))
+    Bill_amount.append(int(input("2.Panels cost:")))
+    Bill_amount.append(int(input("3.Production cost:")))
+    return Bill_amount
+  def show(self,assembly_final,customer_visit):                                                  #final result to be shown to customer with bill
+    self.show=assembly_final
+    self.Bill=customer_visit
+    print("Order delivered,\nThank you")
+
+
+
+
+bhel = company(["CNC","CAD","production","R&D","quality-testing"])                                #object bhel creates based on class company
+ragul=customer("panel")                                                                           #object ragul creates based on class customer
+
+
+print("******Customer Placing Order*******")                    #step1---order placed
+Cad_design=bhel.cad_design("panel-design")                      #step2--design to be made from Cad
+print("----------------------------------")
+design=bhel.design_team(Cad_design)
+print("----------------------------------")
+materials=bhel.bom("requirements")                              #step3--Getting bill of materials 
+
+inventory=bhel.inventory(materials)                             #step4--Checking the bom in inventory                   
+
+fab=bhel.fabrication(design,inventory)                          #step5--once got all bom design to be fabricated
+
+punch=bhel.punching(fab)                                        #step6--punching
+bend=bhel.bending(punch)                                        #step7-bending
+weld=bhel.welding(bend)                                         #step8--welding
+elec=bhel.electroplating(weld)                                  #step9--electroplating
+powder=bhel.powdercoat(elec)                                    #step10--powdercoating
+
+assembly=[]
+print("Requirements for Assembly:")                            #step11--product to be assembled by sending requirements to inventory
+print("1.Inverter:")
+assembly.append(int(input()))
+print("2.Battery:")
+assembly.append(int(input()))
+print("3.Charge Controller")
+assembly.append(int(input()))
+print("4.Cables and Wires")
+assembly.append(int(input()))
+
+
+print("Requirements:\n1.Inverter",assembly[0],"\n2.Battery:",assembly[1],"\n3.Charge Controller:",assembly[2],"\n4.Cables and Wires:",assembly[3])
+
+pass_inv=bhel.assembly_invent(assembly)
+
+assembly_final=bhel.assembly(design,pass_inv)                #step12--Final assembly ready for testing
+
+testing=bhel.testing(assembly_final)                         #step13--testing process
+if testing[0] =="fail":
+  print("**************************************************")
+  print("leakage test failed,return back to welding section")
+elif testing[1]=="fail":
+  print("**************************************************")
+  print("Durability test failed,return back to bending section")
+elif testing[2]=="fail":
+  print("**************************************************")
+  print("paint test failed,return back to powder-coating section")
+elif testing[3]=="fail":
+  print("**************************************************")
+  print("Discharge test failed,return back to power and voltage section")
+else:
+  print("All test passed,getting ready for customer visit")
+
+
+
+customer_visit=ragul.customer_visit(testing)            #step14--customer visit
+print("Bill:\n1.Sheet cost:",customer_visit[0],"\n2.Panel cost:",customer_visit[1],"\n3.Production cost:",customer_visit[2])
+print("Total Bill amount",sum(customer_visit))
+
+
+ragul.show(assembly_final,customer_visit)              #step15--order delivered with bill
